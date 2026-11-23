@@ -1,0 +1,17 @@
+# Sobe um PostgreSQL local para o Squad: docker compose up -d
+services:
+  db:
+    image: postgres:16
+    container_name: squad-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: squad
+      POSTGRES_PASSWORD: squad
+      POSTGRES_DB: squad
+    ports:
+      - "5433:5432"
+    volumes:
+      - squad_data:/var/lib/postgresql/data
+
+volumes:
+  squad_data:
